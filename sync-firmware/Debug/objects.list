@@ -19,6 +19,7 @@
 "./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.o"
 "./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.o"
 "./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.o"
+"./Src/gpio.o"
 "./Src/icache.o"
 "./Src/main.o"
 "./Src/memorymap.o"
@@ -27,4 +28,5 @@
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Src/system_stm32u5xx.o"
+"./Src/vid.o"
 "./Startup/startup_stm32u545retxq.o"

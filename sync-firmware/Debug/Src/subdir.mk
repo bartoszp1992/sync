@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Src/gpio.c \
 ../Src/icache.c \
 ../Src/main.c \
 ../Src/memorymap.c \
@@ -12,9 +13,11 @@ C_SRCS += \
 ../Src/stm32u5xx_it.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c \
-../Src/system_stm32u5xx.c 
+../Src/system_stm32u5xx.c \
+../Src/vid.c 
 
 OBJS += \
+./Src/gpio.o \
 ./Src/icache.o \
 ./Src/main.o \
 ./Src/memorymap.o \
@@ -22,9 +25,11 @@ OBJS += \
 ./Src/stm32u5xx_it.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
-./Src/system_stm32u5xx.o 
+./Src/system_stm32u5xx.o \
+./Src/vid.o 
 
 C_DEPS += \
+./Src/gpio.d \
 ./Src/icache.d \
 ./Src/main.d \
 ./Src/memorymap.d \
@@ -32,7 +37,8 @@ C_DEPS += \
 ./Src/stm32u5xx_it.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d \
-./Src/system_stm32u5xx.d 
+./Src/system_stm32u5xx.d \
+./Src/vid.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -42,7 +48,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/icache.cyclo ./Src/icache.d ./Src/icache.o ./Src/icache.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/memorymap.cyclo ./Src/memorymap.d ./Src/memorymap.o ./Src/memorymap.su ./Src/stm32u5xx_hal_msp.cyclo ./Src/stm32u5xx_hal_msp.d ./Src/stm32u5xx_hal_msp.o ./Src/stm32u5xx_hal_msp.su ./Src/stm32u5xx_it.cyclo ./Src/stm32u5xx_it.d ./Src/stm32u5xx_it.o ./Src/stm32u5xx_it.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/system_stm32u5xx.cyclo ./Src/system_stm32u5xx.d ./Src/system_stm32u5xx.o ./Src/system_stm32u5xx.su
+	-$(RM) ./Src/gpio.cyclo ./Src/gpio.d ./Src/gpio.o ./Src/gpio.su ./Src/icache.cyclo ./Src/icache.d ./Src/icache.o ./Src/icache.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/memorymap.cyclo ./Src/memorymap.d ./Src/memorymap.o ./Src/memorymap.su ./Src/stm32u5xx_hal_msp.cyclo ./Src/stm32u5xx_hal_msp.d ./Src/stm32u5xx_hal_msp.o ./Src/stm32u5xx_hal_msp.su ./Src/stm32u5xx_it.cyclo ./Src/stm32u5xx_it.d ./Src/stm32u5xx_it.o ./Src/stm32u5xx_it.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/system_stm32u5xx.cyclo ./Src/system_stm32u5xx.d ./Src/system_stm32u5xx.o ./Src/system_stm32u5xx.su ./Src/vid.cyclo ./Src/vid.d ./Src/vid.o ./Src/vid.su
 
 .PHONY: clean-Src
 
