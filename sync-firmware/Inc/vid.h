@@ -22,9 +22,11 @@ typedef struct{
 
 	vid_system_t system;
 	uint32_t columns;
-	uint32_t lines; //visible lines
+	uint32_t lines; //with blanking
 	uint32_t vsyncPeriod; //ns
 	uint32_t vsyncPulseWidth; //ns
+	uint32_t actualPulse;
+	uint32_t pulses;
 
 }vid_flow_t;
 

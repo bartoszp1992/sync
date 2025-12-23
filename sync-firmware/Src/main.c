@@ -100,7 +100,9 @@ int main(void)
   MX_ICACHE_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-	vid_init(&video, PAL, 720, 576, 64000, 4990);
+	vid_init(&video, PAL, 720, 625, 64000, 4990);
+
+	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Initialize led */
@@ -124,7 +126,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1) {
 
-		HAL_GPIO_TogglePin(BLINK_GPIO_Port, BLINK_Pin);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
