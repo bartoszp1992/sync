@@ -1,1 +1,2 @@
 ../Src/vid.c:10:6:vid_init	1
+../Src/vid.c:26:6:vid_lineReset	1

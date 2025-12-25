@@ -1,1 +1,2 @@
 ../Src/vid.c:10:6:vid_init	24	static
+../Src/vid.c:26:6:vid_lineReset	16	static

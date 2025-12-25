@@ -603,3 +603,37 @@ Finished building: default.size.stdout
  
 Finished building: sync-firmware.list
  
+01:00:57 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  28580	     32	   1968	  30580	   7774	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+13:54:01 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/main.c: In function 'main':
+../Src/main.c:103:9: warning: implicit declaration of function 'vid_init' [-Wimplicit-function-declaration]
+  103 |         vid_init(&video, PAL, 720, 625, 64000, 4990);
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  28592	     32	   1976	  30600	   7788	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 

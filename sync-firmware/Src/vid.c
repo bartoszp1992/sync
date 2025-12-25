@@ -8,12 +8,24 @@
 #include "vid.h"
 
 void vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
-		uint32_t lines, uint32_t vsyncPeriod, uint32_t vsyncPulseWidth) {
+		uint32_t lines, uint32_t vsyncPeriod, uint32_t vsyncPulseWidth, uint32_t *regCCR, vid_syncPattern_t *pattern) {
 
 	vid->columns = columns;
 	vid->lines = lines;
 	vid->system = system;
 	vid->vsyncPeriod = vsyncPeriod;
 	vid->vsyncPulseWidth = vsyncPulseWidth;
+
+	vid->regCCR = regCCR;
+	vid->regCNT = 0;
+
+	vid->pattern = pattern;
+
+
+}
+
+void vid_lineReset(vid_flow_t *vid){
+
+	vid->regCNT = 0;
 
 }
