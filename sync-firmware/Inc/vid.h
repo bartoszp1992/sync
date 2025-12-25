@@ -10,39 +10,41 @@
 
 #include <stdint.h>
 
+typedef enum {
+
+	PAL, NTSC, SECAM
+
+} vid_system_t;
+
+typedef enum {
+	LOW, HIGH
+} vid_level_t;
+
 typedef enum{
-
-	PAL,
-	NTSC,
-	SECAM
-
-}vid_system_t;
+	VID_STAT_OK,
+	VID_STAT_ERR_NOT_ENOUGH_MEMORY
+}vid_state_t;
 
 
-typedef struct{
-
-	uint32_t vsync;
-	uint32_t *hsync;
-
-}vid_syncPattern_t;
-
-typedef struct{
+typedef struct {
 
 	vid_system_t system;
 	uint32_t columns;
 	uint32_t lines; //with blanking
-	uint32_t vsyncPeriod; //ns
-	uint32_t vsyncPulseWidth; //ns
 
-	uint32_t actualPulse;
 	uint32_t actualLine;
 
 	uint32_t *regCCR;
 	uint32_t *regCNT;
+	uint32_t *regCCMR1;
 
-	vid_syncPattern_t *pattern;
+	uint64_t *patterns;
 
-}vid_flow_t;
+
+} vid_flow_t;
+
+void vid_timerOCCallback(vid_flow_t *vid);
+void vid_timerPECallback(vid_flow_t *vid);
 
 //void vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
 //		uint32_t lines, uint32_t vsyncPeriod, uint32_t vsyncPulseWidth);

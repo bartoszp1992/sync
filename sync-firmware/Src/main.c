@@ -100,7 +100,7 @@ int main(void)
   MX_ICACHE_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-	vid_init(&video, PAL, 720, 625, 64000, 4990);
+	vid_init(&video, PAL, 720, 625, TIM3->CCR1, TIM3->CCMR1);
 
 	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
   /* USER CODE END 2 */
@@ -206,6 +206,19 @@ static void SystemPower_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_TIM_PeriodElapsedHalfCpltCallback(TIM_HandleTypeDef *htim){
+	if(htim->Instance == TIM3){
+		vid_timerPECallback(&video);
+	}
+}
+
+void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){
+	if(htim->Instance == TIM3){
+		vid_timerOCCallback(&video);
+	}
+
+}
 
 /* USER CODE END 4 */
 

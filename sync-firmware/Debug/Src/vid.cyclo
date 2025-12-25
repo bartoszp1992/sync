@@ -1,2 +1,5 @@
-../Src/vid.c:10:6:vid_init	1
-../Src/vid.c:26:6:vid_lineReset	1
+../Src/vid.c:17:13:vid_init	2
+../Src/vid.c:46:6:vid_levelOnCompare	2
+../Src/vid.c:63:6:vid_timerOCCallback	2
+../Src/vid.c:80:6:vid_timerPECallback	2
+../Src/vid.c:89:6:vid_lineReset	1
