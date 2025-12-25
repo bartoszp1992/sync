@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 vid_state_t vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
-		uint32_t lines, uint32_t *regCCR, uint32_t *regCCMR1) {
+		uint32_t lines, volatile uint32_t *regCCR, volatile uint32_t *regCCMR1) {
 
 	vid_state_t status = VID_STAT_OK;
 
@@ -41,21 +41,21 @@ vid_state_t vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
 }
 
 /*
- * set targer level on next compare event
+ * set target level on next compare event
  */
 void vid_levelOnCompare(vid_flow_t *vid, vid_level_t level){
 
-	*vid->regCCMR1 &= ~(1<<16);//OC1M[3]
-	*vid->regCCMR1 &= ~(7<<4);// reset OC1M[2:0]
+	*vid->regCCMR1 &= ~(1<<16);//OC1M[3] - reset bit 16
+	*vid->regCCMR1 &= ~(7<<4);// reset OC1M[2:0] - reset bits 4,5,6,7
 
 	if(level == HIGH){
 		//switch register
-		*vid->regCCMR1 |= 1<<4;
+		*vid->regCCMR1 |= 1<<4;//active level on match
 
 	}
 	else{
 		//switch register
-		*vid->regCCMR1 |= 1<<5;
+		*vid->regCCMR1 |= 1<<5;//inactive level on match
 	}
 
 }
@@ -85,7 +85,9 @@ void vid_timerPECallback(vid_flow_t *vid){
 }
 
 
-
+/*
+ * fot future use: reset line due to sync with input signal
+ */
 void vid_lineReset(vid_flow_t *vid){
 
 	vid->regCNT = 0;

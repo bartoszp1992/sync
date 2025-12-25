@@ -2,4 +2,4 @@
 ../Src/vid.c:46:6:vid_levelOnCompare	16	static
 ../Src/vid.c:63:6:vid_timerOCCallback	48	static
 ../Src/vid.c:80:6:vid_timerPECallback	16	static
-../Src/vid.c:89:6:vid_lineReset	16	static
+../Src/vid.c:91:6:vid_lineReset	16	static

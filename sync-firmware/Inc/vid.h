@@ -20,11 +20,9 @@ typedef enum {
 	LOW, HIGH
 } vid_level_t;
 
-typedef enum{
-	VID_STAT_OK,
-	VID_STAT_ERR_NOT_ENOUGH_MEMORY
-}vid_state_t;
-
+typedef enum {
+	VID_STAT_OK, VID_STAT_ERR_NOT_ENOUGH_MEMORY
+} vid_state_t;
 
 typedef struct {
 
@@ -34,19 +32,23 @@ typedef struct {
 
 	uint32_t actualLine;
 
-	uint32_t *regCCR;
-	uint32_t *regCNT;
-	uint32_t *regCCMR1;
+	//shortcuts to timer registers
+	volatile uint32_t *regCCR;
+	volatile uint32_t *regCNT;
+	volatile uint32_t *regCCMR1;
 
+	//pointer for sync array(64bits per line * target number of lines)
 	uint64_t *patterns;
-
 
 } vid_flow_t;
 
-void vid_timerOCCallback(vid_flow_t *vid);
-void vid_timerPECallback(vid_flow_t *vid);
+vid_state_t vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
+		uint32_t lines, volatile uint32_t *regCCR, volatile uint32_t *regCCMR1);
 
-//void vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
-//		uint32_t lines, uint32_t vsyncPeriod, uint32_t vsyncPulseWidth);
+//run this in output compare INT
+void vid_timerOCCallback(vid_flow_t *vid);
+
+//run this in period elapsed INT
+void vid_timerPECallback(vid_flow_t *vid);
 
 #endif /* VID_H_ */

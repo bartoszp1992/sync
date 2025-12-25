@@ -23,25 +23,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   9 .ARM.attributes 00000036  00000000  00000000  0000a070  2**0
                   CONTENTS, READONLY
- 10 .debug_info   00019019  00000000  00000000  0000a0a6  2**0
+ 10 .debug_info   0001904b  00000000  00000000  0000a0a6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 11 .debug_abbrev 000030ab  00000000  00000000  000230bf  2**0
+ 11 .debug_abbrev 0000309b  00000000  00000000  000230f1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 12 .debug_aranges 000015b0  00000000  00000000  00026170  2**3
+ 12 .debug_aranges 000015b0  00000000  00000000  00026190  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_rnglists 000010d9  00000000  00000000  00027720  2**0
+ 13 .debug_rnglists 000010d9  00000000  00000000  00027740  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_macro  0002fa65  00000000  00000000  000287f9  2**0
+ 14 .debug_macro  0002fa65  00000000  00000000  00028819  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_line   0001bbb8  00000000  00000000  0005825e  2**0
+ 15 .debug_line   0001bbb2  00000000  00000000  0005827e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_str    0012a4e4  00000000  00000000  00073e16  2**0
+ 16 .debug_str    0012a4e4  00000000  00000000  00073e30  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .comment      00000043  00000000  00000000  0019e2fa  2**0
+ 17 .comment      00000043  00000000  00000000  0019e314  2**0
                   CONTENTS, READONLY
- 18 .debug_frame  00005ebc  00000000  00000000  0019e340  2**2
+ 18 .debug_frame  00005ebc  00000000  00000000  0019e358  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_line_str 00000072  00000000  00000000  001a41fc  2**0
+ 19 .debug_line_str 00000072  00000000  00000000  001a4214  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -18843,76 +18843,75 @@ int main(void)
   MX_TIM3_Init();
  80075de:	f000 f993 	bl	8007908 <MX_TIM3_Init>
   /* USER CODE BEGIN 2 */
-	vid_init(&video, PAL, 720, 625, TIM3->CCR1, TIM3->CCMR1);
- 80075e2:	4b1a      	ldr	r3, [pc, #104]	@ (800764c <main+0x8c>)
- 80075e4:	6b5b      	ldr	r3, [r3, #52]	@ 0x34
- 80075e6:	4a19      	ldr	r2, [pc, #100]	@ (800764c <main+0x8c>)
- 80075e8:	6992      	ldr	r2, [r2, #24]
- 80075ea:	9201      	str	r2, [sp, #4]
- 80075ec:	9300      	str	r3, [sp, #0]
- 80075ee:	f240 2371 	movw	r3, #625	@ 0x271
- 80075f2:	f44f 7234 	mov.w	r2, #720	@ 0x2d0
- 80075f6:	2100      	movs	r1, #0
- 80075f8:	4815      	ldr	r0, [pc, #84]	@ (8007650 <main+0x90>)
- 80075fa:	f000 fadd 	bl	8007bb8 <vid_init>
+	vid_init(&video, PAL, 720, 625, &TIM3->CCR1, &TIM3->CCMR1);
+ 80075e2:	4b19      	ldr	r3, [pc, #100]	@ (8007648 <main+0x88>)
+ 80075e4:	9301      	str	r3, [sp, #4]
+ 80075e6:	4b19      	ldr	r3, [pc, #100]	@ (800764c <main+0x8c>)
+ 80075e8:	9300      	str	r3, [sp, #0]
+ 80075ea:	f240 2371 	movw	r3, #625	@ 0x271
+ 80075ee:	f44f 7234 	mov.w	r2, #720	@ 0x2d0
+ 80075f2:	2100      	movs	r1, #0
+ 80075f4:	4816      	ldr	r0, [pc, #88]	@ (8007650 <main+0x90>)
+ 80075f6:	f000 fadf 	bl	8007bb8 <vid_init>
 
 	HAL_TIM_OC_Start(&htim3, TIM_CHANNEL_1);
- 80075fe:	2100      	movs	r1, #0
- 8007600:	4814      	ldr	r0, [pc, #80]	@ (8007654 <main+0x94>)
- 8007602:	f7fe f897 	bl	8005734 <HAL_TIM_OC_Start>
+ 80075fa:	2100      	movs	r1, #0
+ 80075fc:	4815      	ldr	r0, [pc, #84]	@ (8007654 <main+0x94>)
+ 80075fe:	f7fe f899 	bl	8005734 <HAL_TIM_OC_Start>
   /* USER CODE END 2 */
 
   /* Initialize led */
   BSP_LED_Init(LED_GREEN);
- 8007606:	2000      	movs	r0, #0
- 8007608:	f7f8 fff4 	bl	80005f4 <BSP_LED_Init>
+ 8007602:	2000      	movs	r0, #0
+ 8007604:	f7f8 fff6 	bl	80005f4 <BSP_LED_Init>
 
   /* Initialize USER push-button, will be used to trigger an interrupt each time it's pressed.*/
   BSP_PB_Init(BUTTON_USER, BUTTON_MODE_EXTI);
- 800760c:	2101      	movs	r1, #1
- 800760e:	2000      	movs	r0, #0
- 8007610:	f7f9 f82c 	bl	800066c <BSP_PB_Init>
+ 8007608:	2101      	movs	r1, #1
+ 800760a:	2000      	movs	r0, #0
+ 800760c:	f7f9 f82e 	bl	800066c <BSP_PB_Init>
 
   /* Initialize COM1 port (115200, 8 bits (7-bit data + 1 stop bit), no parity */
   BspCOMInit.BaudRate   = 115200;
- 8007614:	4b10      	ldr	r3, [pc, #64]	@ (8007658 <main+0x98>)
- 8007616:	f44f 32e1 	mov.w	r2, #115200	@ 0x1c200
- 800761a:	601a      	str	r2, [r3, #0]
+ 8007610:	4b11      	ldr	r3, [pc, #68]	@ (8007658 <main+0x98>)
+ 8007612:	f44f 32e1 	mov.w	r2, #115200	@ 0x1c200
+ 8007616:	601a      	str	r2, [r3, #0]
   BspCOMInit.WordLength = COM_WORDLENGTH_8B;
- 800761c:	4b0e      	ldr	r3, [pc, #56]	@ (8007658 <main+0x98>)
- 800761e:	2200      	movs	r2, #0
- 8007620:	605a      	str	r2, [r3, #4]
+ 8007618:	4b0f      	ldr	r3, [pc, #60]	@ (8007658 <main+0x98>)
+ 800761a:	2200      	movs	r2, #0
+ 800761c:	605a      	str	r2, [r3, #4]
   BspCOMInit.StopBits   = COM_STOPBITS_1;
- 8007622:	4b0d      	ldr	r3, [pc, #52]	@ (8007658 <main+0x98>)
- 8007624:	2200      	movs	r2, #0
- 8007626:	811a      	strh	r2, [r3, #8]
+ 800761e:	4b0e      	ldr	r3, [pc, #56]	@ (8007658 <main+0x98>)
+ 8007620:	2200      	movs	r2, #0
+ 8007622:	811a      	strh	r2, [r3, #8]
   BspCOMInit.Parity     = COM_PARITY_NONE;
- 8007628:	4b0b      	ldr	r3, [pc, #44]	@ (8007658 <main+0x98>)
- 800762a:	2200      	movs	r2, #0
- 800762c:	815a      	strh	r2, [r3, #10]
+ 8007624:	4b0c      	ldr	r3, [pc, #48]	@ (8007658 <main+0x98>)
+ 8007626:	2200      	movs	r2, #0
+ 8007628:	815a      	strh	r2, [r3, #10]
   BspCOMInit.HwFlowCtl  = COM_HWCONTROL_NONE;
- 800762e:	4b0a      	ldr	r3, [pc, #40]	@ (8007658 <main+0x98>)
- 8007630:	2200      	movs	r2, #0
- 8007632:	819a      	strh	r2, [r3, #12]
+ 800762a:	4b0b      	ldr	r3, [pc, #44]	@ (8007658 <main+0x98>)
+ 800762c:	2200      	movs	r2, #0
+ 800762e:	819a      	strh	r2, [r3, #12]
   if (BSP_COM_Init(COM1, &BspCOMInit) != BSP_ERROR_NONE)
- 8007634:	4908      	ldr	r1, [pc, #32]	@ (8007658 <main+0x98>)
- 8007636:	2000      	movs	r0, #0
- 8007638:	f7f9 f8b2 	bl	80007a0 <BSP_COM_Init>
- 800763c:	4603      	mov	r3, r0
- 800763e:	2b00      	cmp	r3, #0
- 8007640:	d002      	beq.n	8007648 <main+0x88>
+ 8007630:	4909      	ldr	r1, [pc, #36]	@ (8007658 <main+0x98>)
+ 8007632:	2000      	movs	r0, #0
+ 8007634:	f7f9 f8b4 	bl	80007a0 <BSP_COM_Init>
+ 8007638:	4603      	mov	r3, r0
+ 800763a:	2b00      	cmp	r3, #0
+ 800763c:	d002      	beq.n	8007644 <main+0x84>
   {
     Error_Handler();
- 8007642:	f000 f889 	bl	8007758 <Error_Handler>
+ 800763e:	f000 f88b 	bl	8007758 <Error_Handler>
   }
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1) {
- 8007646:	bf00      	nop
- 8007648:	bf00      	nop
- 800764a:	e7fd      	b.n	8007648 <main+0x88>
- 800764c:	40000400 	.word	0x40000400
+ 8007642:	bf00      	nop
+ 8007644:	bf00      	nop
+ 8007646:	e7fd      	b.n	8007644 <main+0x84>
+ 8007648:	40000418 	.word	0x40000418
+ 800764c:	40000434 	.word	0x40000434
  8007650:	20000140 	.word	0x20000140
  8007654:	20000164 	.word	0x20000164
  8007658:	20000130 	.word	0x20000130
@@ -20034,7 +20033,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
 #include <stdlib.h>
 
 vid_state_t vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
-		uint32_t lines, uint32_t *regCCR, uint32_t *regCCMR1) {
+		uint32_t lines, volatile uint32_t *regCCR, volatile uint32_t *regCCMR1) {
  8007bb8:	b580      	push	{r7, lr}
  8007bba:	b086      	sub	sp, #24
  8007bbc:	af00      	add	r7, sp, #0
@@ -20117,7 +20116,7 @@ vid_state_t vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
 08007c2a <vid_levelOnCompare>:
 
 /*
- * set targer level on next compare event
+ * set target level on next compare event
  */
 void vid_levelOnCompare(vid_flow_t *vid, vid_level_t level){
  8007c2a:	b480      	push	{r7}
@@ -20127,7 +20126,7 @@ void vid_levelOnCompare(vid_flow_t *vid, vid_level_t level){
  8007c32:	460b      	mov	r3, r1
  8007c34:	70fb      	strb	r3, [r7, #3]
 
-	*vid->regCCMR1 &= ~(1<<16);//OC1M[3]
+	*vid->regCCMR1 &= ~(1<<16);//OC1M[3] - reset bit 16
  8007c36:	687b      	ldr	r3, [r7, #4]
  8007c38:	699b      	ldr	r3, [r3, #24]
  8007c3a:	681a      	ldr	r2, [r3, #0]
@@ -20135,7 +20134,7 @@ void vid_levelOnCompare(vid_flow_t *vid, vid_level_t level){
  8007c3e:	699b      	ldr	r3, [r3, #24]
  8007c40:	f422 3280 	bic.w	r2, r2, #65536	@ 0x10000
  8007c44:	601a      	str	r2, [r3, #0]
-	*vid->regCCMR1 &= ~(7<<4);// reset OC1M[2:0]
+	*vid->regCCMR1 &= ~(7<<4);// reset OC1M[2:0] - reset bits 4,5,6,7
  8007c46:	687b      	ldr	r3, [r7, #4]
  8007c48:	699b      	ldr	r3, [r3, #24]
  8007c4a:	681a      	ldr	r2, [r3, #0]
@@ -20149,7 +20148,7 @@ void vid_levelOnCompare(vid_flow_t *vid, vid_level_t level){
  8007c58:	2b01      	cmp	r3, #1
  8007c5a:	d108      	bne.n	8007c6e <vid_levelOnCompare+0x44>
 		//switch register
-		*vid->regCCMR1 |= 1<<4;
+		*vid->regCCMR1 |= 1<<4;//active level on match
  8007c5c:	687b      	ldr	r3, [r7, #4]
  8007c5e:	699b      	ldr	r3, [r3, #24]
  8007c60:	681a      	ldr	r2, [r3, #0]
@@ -20159,12 +20158,12 @@ void vid_levelOnCompare(vid_flow_t *vid, vid_level_t level){
  8007c6a:	601a      	str	r2, [r3, #0]
 	else{
 		//switch register
-		*vid->regCCMR1 |= 1<<5;
+		*vid->regCCMR1 |= 1<<5;//inactive level on match
 	}
 
 }
  8007c6c:	e007      	b.n	8007c7e <vid_levelOnCompare+0x54>
-		*vid->regCCMR1 |= 1<<5;
+		*vid->regCCMR1 |= 1<<5;//inactive level on match
  8007c6e:	687b      	ldr	r3, [r7, #4]
  8007c70:	699b      	ldr	r3, [r3, #24]
  8007c72:	681a      	ldr	r2, [r3, #0]
