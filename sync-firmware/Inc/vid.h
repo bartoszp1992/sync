@@ -30,8 +30,6 @@ typedef struct {
 	//shortcuts to timer registers
 	volatile uint32_t *regHsyncCCR;
 
-	//pointer for sync array(64bits per line * target number of lines)
-	uint64_t *patterns;
 
 } vid_flow_t;
 
@@ -39,9 +37,9 @@ vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
 		volatile uint32_t *regVsyncCCR);
 
 //run this in output compare INT
-void vid_timerOCCallback(vid_flow_t *vid);
+void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
 
 //run this in period elapsed INT
-void vid_timerPECallback(vid_flow_t *vid);
+void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
 
 #endif /* VID_H_ */

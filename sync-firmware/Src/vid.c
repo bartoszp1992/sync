@@ -16,6 +16,8 @@
 #include "vid.h"
 #include <stdlib.h>
 
+volatile uint8_t parity;
+
 vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
 		volatile uint32_t *regHsyncCCR) {
 
@@ -27,56 +29,56 @@ vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
 
 	vid->regHsyncCCR = regHsyncCCR;
 
-	*vid->regHsyncCCR = 5;
-
-	vid->patterns = malloc(vid->periods * sizeof(uint64_t));
-
-	if (vid->patterns == NULL) {
-		status = VID_STAT_ERR_NOT_ENOUGH_MEMORY;
-	}
-
-
-	//temp
-	// 5x: jeden impuls LOW 1us na początku
-	for(int i=0;i<5;i++){
-	    vid->patterns[i] = 0x0000000000000003ULL;
-	}
-
-	// 5x: dwa impulsy LOW 1us w okresie
-	for(int i=5;i<10;i++){
-	    vid->patterns[i] = (1ULL<<5)|(1ULL<<6)|(1ULL<<20)|(1ULL<<21);
-	}
-
+	//start hsync PWM
 	HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_1);
+	*vid->regHsyncCCR = 5; //set duty
 
-
+	//start OC for vsync start
 	HAL_TIM_OC_Start_IT(&htim3, TIM_CHANNEL_2);
+
 	//set start time of tim4
 	TIM3->CCR2 = 16;
 
-
 	//set duty for tim4 ch1
 	TIM4->CCR1 = 20;
-
-
-
-	//tempp end
-
 
 	return status;
 
 }
 
+/*
+ * run in callback from OC channel in main timer
+ */
+void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
 
-void vid_timerOCCallback(vid_flow_t *vid) {
+	if (htim->Instance == TIM3) {
+
+		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_2) {
+
+			parity++;
+
+			if ((parity & 1) == 0)
+				HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
+			else
+				HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
+		}
+
+	}
 
 }
 
-void vid_timerPECallback(vid_flow_t *vid) {
+/*
+ * run in callback from PE in main timer
+ */
+void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
 
-	vid->actualPeriod++;
-	if (vid->actualPeriod >= vid->periods)
-		vid->actualPeriod = 0;
+	if (htim->Instance == TIM3) {
+
+		vid->actualPeriod++;
+		if (vid->actualPeriod >= vid->periods)
+			vid->actualPeriod = 0;
+
+	}
 
 }
 
@@ -84,7 +86,6 @@ void vid_timerPECallback(vid_flow_t *vid) {
  * fot future use: reset line due to sync with input signal
  */
 void vid_lineReset(vid_flow_t *vid) {
-
 
 }
 

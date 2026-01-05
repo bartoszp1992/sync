@@ -50,7 +50,6 @@ COM_InitTypeDef BspCOMInit;
 
 /* USER CODE BEGIN PV */
 vid_flow_t video;
-volatile uint8_t parity = 0;
 
 /* USER CODE END PV */
 
@@ -202,30 +201,13 @@ static void SystemPower_Config(void) {
 /* USER CODE BEGIN 4 */
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	if (htim->Instance == TIM3) {
-		vid_timerPECallback(&video);
-
-		HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
-	}
+	vid_timerHsyncPECallback(&video, htim);
 }
 
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
-	if (htim->Instance == TIM3) {
 
-		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) {
+	vid_timerHsyncOCCallback(&video, htim);
 
-			vid_timerOCCallback(&video);
-
-		} else if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_2) {
-
-			parity++;
-
-			if ((parity & 1) == 0)// sprawdź parzystość licznika i wykonaj PWM start co drugi cykl
-				HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
-			else
-				HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
-		}
-	}
 }
 
 /* USER CODE END 4 */
