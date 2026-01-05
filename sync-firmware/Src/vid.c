@@ -56,7 +56,7 @@ void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
 
 		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_2) {
 
-			parity++;
+
 
 			if ((parity & 1) == 0)
 				HAL_TIM_PWM_Start(vid->timerSecondary, TIM_CHANNEL_1);
