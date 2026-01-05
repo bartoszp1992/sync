@@ -5779,3 +5779,1283 @@ Finished building: default.size.stdout
  
 Finished building: sync-firmware.list
  
+09:59:58 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:28: error: 'regHsyncCCR' undeclared (first use in this function)
+   30 |         vid->regHsyncCCR = regHsyncCCR;
+      |                            ^~~~~~~~~~~
+../Src/vid.c:30:28: note: each undeclared identifier is reported only once for each function it appears in
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:00:28 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:01:15 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:05:20 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:05:46 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:05:58 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:06:39 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+In file included from ../Src/vid.c:16:
+../Inc/vid.h: In function 'vid_init':
+../Inc/vid.h:41:13: error: invalid storage class for function 'vid_timerHsyncOCCallback'
+   41 | static void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:13: error: invalid storage class for function 'vid_timerHsyncOCCallback'
+   52 | static void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:13: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | static void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from ../Src/main.c:29:
+../Inc/vid.h: In function 'vid_init':
+../Inc/vid.h:41:13: error: invalid storage class for function 'vid_timerHsyncOCCallback'
+   41 | static void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Src/main.c:209:9: warning: implicit declaration of function 'vid_timerHsyncOCCallback'; did you mean 'vid_timerHsyncPECallback'? [-Wimplicit-function-declaration]
+  209 |         vid_timerHsyncOCCallback(&video, htim);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+      |         vid_timerHsyncPECallback
+../Src/main.c: In function 'vid_init':
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:07:02 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void) {
+      |     ^~~~
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'main':
+../Src/main.c:88:9: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   88 |         SystemPower_Config();
+      |         ^~~~~~~~~~~~~~~~~~
+      |         SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:139:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: error: invalid storage class for function 'SystemPower_Config'
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:226:1: error: expected declaration or statement at end of input
+  226 | }
+      | ^
+../Src/main.c:245: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:219:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  219 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:207:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  207 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:203:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  203 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:189:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  189 | static void SystemPower_Config(void) {
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void) {
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:10:09 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/gpdma.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/gpdma.d" -MT"Src/gpdma.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/gpdma.o"
+arm-none-eabi-gcc "../Src/gpio.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/gpio.d" -MT"Src/gpio.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/gpio.o"
+arm-none-eabi-gcc "../Src/icache.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/icache.d" -MT"Src/icache.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/icache.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/memorymap.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/memorymap.d" -MT"Src/memorymap.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/memorymap.o"
+arm-none-eabi-gcc "../Src/stm32u5xx_hal_msp.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/stm32u5xx_hal_msp.d" -MT"Src/stm32u5xx_hal_msp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/stm32u5xx_hal_msp.o"
+arm-none-eabi-gcc "../Src/stm32u5xx_it.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/stm32u5xx_it.d" -MT"Src/stm32u5xx_it.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/stm32u5xx_it.o"
+arm-none-eabi-gcc "../Src/system_stm32u5xx.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/system_stm32u5xx.d" -MT"Src/system_stm32u5xx.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/system_stm32u5xx.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void)
+      |     ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:89:3: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   89 |   SystemPower_Config();
+      |   ^~~~~~~~~~~~~~~~~~
+      |   SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:141:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  141 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:195:13: error: invalid storage class for function 'SystemPower_Config'
+  195 | static void SystemPower_Config(void)
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:235:1: error: expected declaration or statement at end of input
+  235 | }
+      | ^
+../Src/main.c:254: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:227:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  227 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Src/main.c:215:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  215 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:211:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  211 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:195:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  195 | static void SystemPower_Config(void)
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:141:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  141 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:10:35 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/tim.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/tim.d" -MT"Src/tim.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/tim.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void)
+      |     ^~~~
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:52:6: error: static declaration of 'vid_timerHsyncOCCallback' follows non-static declaration
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/vid.c:16:
+../Inc/vid.h:41:6: note: previous declaration of 'vid_timerHsyncOCCallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   41 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:73:6: error: static declaration of 'vid_timerHsyncPECallback' follows non-static declaration
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/vid.h:44:6: note: previous declaration of 'vid_timerHsyncPECallback' with type 'void(vid_flow_t *, TIM_HandleTypeDef *)'
+   44 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:94:1: error: expected declaration or statement at end of input
+   94 | }
+      | ^
+../Src/vid.c:95: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/vid.c: At top level:
+../Src/vid.c:92:6: warning: 'vid_screenReset' defined but not used [-Wunused-function]
+   92 | void vid_screenReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~~~
+../Src/vid.c:88:6: warning: 'vid_lineReset' defined but not used [-Wunused-function]
+   88 | void vid_lineReset(vid_flow_t *vid) {
+      |      ^~~~~~~~~~~~~
+../Src/vid.c:73:6: warning: 'vid_timerHsyncPECallback' defined but not used [-Wunused-function]
+   73 | void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:52:6: warning: 'vid_timerHsyncOCCallback' defined but not used [-Wunused-function]
+   52 | void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/vid.c:21:13: warning: 'vid_init' defined but not used [-Wunused-function]
+   21 | vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+      |             ^~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/main.c: In function 'main':
+../Src/main.c:89:3: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   89 |   SystemPower_Config();
+      |   ^~~~~~~~~~~~~~~~~~
+      |   SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:141:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  141 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:195:13: error: invalid storage class for function 'SystemPower_Config'
+  195 | static void SystemPower_Config(void)
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:235:1: error: expected declaration or statement at end of input
+  235 | }
+      | ^
+../Src/main.c:254: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:227:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  227 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Src/main.c:215:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  215 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:211:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  211 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:195:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  195 | static void SystemPower_Config(void)
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:141:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  141 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:11:04 **** Clean-only build of configuration Debug for project sync-firmware ****
+make -j8 clean 
+rm -rf ./Startup/startup_stm32u545retxq.d ./Startup/startup_stm32u545retxq.o
+rm -rf ./Src/gpdma.cyclo ./Src/gpdma.d ./Src/gpdma.o ./Src/gpdma.su ./Src/gpio.cyclo ./Src/gpio.d ./Src/gpio.o ./Src/gpio.su ./Src/icache.cyclo ./Src/icache.d ./Src/icache.o ./Src/icache.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/memorymap.cyclo ./Src/memorymap.d ./Src/memorymap.o ./Src/memorymap.su ./Src/stm32u5xx_hal_msp.cyclo ./Src/stm32u5xx_hal_msp.d ./Src/stm32u5xx_hal_msp.o ./Src/stm32u5xx_hal_msp.su ./Src/stm32u5xx_it.cyclo ./Src/stm32u5xx_it.d ./Src/stm32u5xx_it.o ./Src/stm32u5xx_it.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/system_stm32u5xx.cyclo ./Src/system_stm32u5xx.d ./Src/system_stm32u5xx.o ./Src/system_stm32u5xx.su ./Src/tim.cyclo ./Src/tim.d ./Src/tim.o ./Src/tim.su ./Src/vid.cyclo ./Src/vid.d ./Src/vid.o ./Src/vid.su
+rm -rf ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.su ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.cyclo ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.d ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.o ./Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.su
+rm -rf ./Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.cyclo ./Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.d ./Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.o ./Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.su
+rm -rf default.size.stdout sync-firmware.elf sync-firmware.list sync-firmware.map
+ 
+10:11:04 **** Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc -mcpu=cortex-m33 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32u545retxq.d" -MT"Startup/startup_stm32u545retxq.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32u545retxq.o" "../Startup/startup_stm32u545retxq.s"
+arm-none-eabi-gcc "../Src/gpdma.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/gpdma.d" -MT"Src/gpdma.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/gpdma.o"
+arm-none-eabi-gcc "../Src/gpio.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/gpio.d" -MT"Src/gpio.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/gpio.o"
+arm-none-eabi-gcc "../Src/icache.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/icache.d" -MT"Src/icache.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/icache.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/memorymap.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/memorymap.d" -MT"Src/memorymap.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/memorymap.o"
+arm-none-eabi-gcc "../Src/stm32u5xx_hal_msp.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/stm32u5xx_hal_msp.d" -MT"Src/stm32u5xx_hal_msp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/stm32u5xx_hal_msp.o"
+arm-none-eabi-gcc "../Src/stm32u5xx_it.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/stm32u5xx_it.d" -MT"Src/stm32u5xx_it.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/stm32u5xx_it.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/main.c: In function 'vid_init':
+../Src/main.c:58:13: error: invalid storage class for function 'SystemPower_Config'
+   58 | static void SystemPower_Config(void);
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' is normally a non-static function [-Wmain]
+   72 | int main(void)
+      |     ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:89:3: warning: implicit declaration of function 'SystemPower_Config'; did you mean 'SystemClock_Config'? [-Wimplicit-function-declaration]
+   89 |   SystemPower_Config();
+      |   ^~~~~~~~~~~~~~~~~~
+      |   SystemClock_Config
+../Src/main.c: In function 'vid_init':
+../Src/main.c:141:6: error: static declaration of 'SystemClock_Config' follows non-static declaration
+  141 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:57:6: note: previous declaration of 'SystemClock_Config' with type 'void(void)'
+   57 | void SystemClock_Config(void);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:195:13: error: invalid storage class for function 'SystemPower_Config'
+  195 | static void SystemPower_Config(void)
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:235:1: error: expected declaration or statement at end of input
+  235 | }
+      | ^
+arm-none-eabi-gcc "../Src/system_stm32u5xx.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/system_stm32u5xx.d" -MT"Src/system_stm32u5xx.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/system_stm32u5xx.o"
+../Src/main.c:254: warning: control reaches end of non-void function [-Wreturn-type]
+../Src/main.c: At top level:
+../Src/main.c:227:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  227 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Src/main.c:215:6: warning: 'HAL_TIM_OC_DelayElapsedCallback' defined but not used [-Wunused-function]
+  215 | void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:211:6: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  211 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:195:13: warning: 'SystemPower_Config' defined but not used [-Wunused-function]
+  195 | static void SystemPower_Config(void)
+      |             ^~~~~~~~~~~~~~~~~~
+../Src/main.c:141:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  141 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/main.c:72:5: warning: 'main' defined but not used [-Wunused-function]
+   72 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:52: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:14:46 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/tim.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/tim.d" -MT"Src/tim.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/tim.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.o"
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.o"
+arm-none-eabi-gcc "../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.d" -MT"Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.o"
+arm-none-eabi-gcc "../Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.d" -MT"Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BSP/STM32U5xx_Nucleo/stm32u5xx_nucleo.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	     32	   2096	  37736	   9368	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:15:03 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:28: error: invalid type argument of unary '*' (have 'uint32_t' {aka 'long unsigned int'})
+   30 |         vid->regHsyncCCR = *timerPrimary->Instance->CCR1;
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:15:09 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	     32	   2096	  37736	   9368	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:15:20 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:30:26: warning: assignment to 'volatile uint32_t *' {aka 'volatile long unsigned int *'} from 'uint32_t' {aka 'long unsigned int'} makes pointer from integer without a cast [-Wint-conversion]
+   30 |         vid->regHsyncCCR = timerPrimary->Instance->CCR1;
+      |                          ^
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	     32	   2096	  37736	   9368	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:15:38 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	     32	   2096	  37736	   9368	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:16:05 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/vid.c: In function 'vid_init':
+../Src/vid.c:37:9: error: too few arguments to function 'HAL_TIM_OC_Start_IT'
+   37 |         HAL_TIM_OC_Start_IT(timerPrimary), TIM_CHANNEL_2);
+      |         ^~~~~~~~~~~~~~~~~~~
+In file included from ../Inc/stm32u5xx_hal_conf.h:408,
+                 from ../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:29,
+                 from ../Inc/main.h:30,
+                 from ../Inc/gpio.h:29,
+                 from ../Inc/vid.h:12,
+                 from ../Src/vid.c:16:
+../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_tim.h:2294:19: note: declared here
+ 2294 | HAL_StatusTypeDef HAL_TIM_OC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel);
+      |                   ^~~~~~~~~~~~~~~~~~~
+../Src/vid.c:37:42: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+   37 |         HAL_TIM_OC_Start_IT(timerPrimary), TIM_CHANNEL_2);
+      |                                          ^
+../Src/vid.c:37:42: warning: statement with no effect [-Wunused-value]
+../Src/vid.c:37:57: error: expected ';' before ')' token
+   37 |         HAL_TIM_OC_Start_IT(timerPrimary), TIM_CHANNEL_2);
+      |                                                         ^
+../Src/vid.c:37:57: error: expected statement before ')' token
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:16:18 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35604	     32	   2096	  37732	   9364	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:17:59 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:18:18 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-size  sync-firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+10:18:21 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-size  sync-firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+10:19:28 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:19:52 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:19:55 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-size  sync-firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+10:20:49 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:21:37 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:21:58 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+../Src/vid.c: In function 'vid_timerHsyncOCCallback':
+../Src/vid.c:55:31: error: 'id' undeclared (first use in this function); did you mean 'vid'?
+   55 |         if (htim->Instance == id->timerPrimary->Instance) {
+      |                               ^~
+      |                               vid
+../Src/vid.c:55:31: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:52: Src/vid.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:22:02 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:22:05 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-size  sync-firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35612	     32	   2104	  37748	   9374	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+10:23:07 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35616	     32	   2104	  37752	   9378	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:23:24 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-size  sync-firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35616	     32	   2104	  37752	   9378	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+10:23:30 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-size  sync-firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35616	     32	   2104	  37752	   9378	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+10:24:11 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/vid.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32U545xx -c -I../Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32U5xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/vid.d" -MT"Src/vid.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/vid.o"
+arm-none-eabi-gcc -o "sync-firmware.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/bartosz/Documents/projects/drones/gear/synchronizer/sync-firmware/STM32U545RETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="sync-firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sync-firmware.elf
+ 
+arm-none-eabi-size  sync-firmware.elf 
+arm-none-eabi-objdump -h -S sync-firmware.elf  > "sync-firmware.list"
+   text	   data	    bss	    dec	    hex	filename
+  35616	     32	   2104	  37752	   9378	sync-firmware.elf
+Finished building: default.size.stdout
+ 
+Finished building: sync-firmware.list
+ 
+10:24:13 **** Incremental Build of configuration Debug for project sync-firmware ****
+make -j8 all 
+arm-none-eabi-size  sync-firmware.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35616	     32	   2104	  37752	   9378	sync-firmware.elf
+Finished building: default.size.stdout
+ 

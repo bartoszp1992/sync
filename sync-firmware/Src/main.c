@@ -101,7 +101,7 @@ int main(void) {
 	MX_TIM3_Init();
 	MX_TIM4_Init();
 	/* USER CODE BEGIN 2 */
-	vid_init(&video, 64, 10, &TIM3->CCR1); //debug
+	vid_init(&video, 64, 10, &htim3, &htim4); //debug
 
 	/* USER CODE END 2 */
 

@@ -1,5 +1,5 @@
 ../Src/vid.c:21:13:vid_init	32	static
-../Src/vid.c:52:6:vid_timerHsyncOCCallback	16	static
-../Src/vid.c:73:6:vid_timerHsyncPECallback	16	static
-../Src/vid.c:88:6:vid_lineReset	16	static
-../Src/vid.c:92:6:vid_screenReset	16	static
+../Src/vid.c:53:6:vid_timerHsyncOCCallback	16	static
+../Src/vid.c:74:6:vid_timerHsyncPECallback	16	static
+../Src/vid.c:89:6:vid_lineReset	16	static
+../Src/vid.c:93:6:vid_screenReset	16	static

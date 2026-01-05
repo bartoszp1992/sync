@@ -27,6 +27,8 @@ typedef struct {
 
 	volatile uint32_t actualPeriod;
 
+	TIM_HandleTypeDef *timerPrimary, *timerSecondary;
+
 	//shortcuts to timer registers
 	volatile uint32_t *regHsyncCCR;
 
@@ -34,7 +36,7 @@ typedef struct {
 } vid_flow_t;
 
 vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
-		volatile uint32_t *regVsyncCCR);
+		TIM_HandleTypeDef *timerPrimary, TIM_HandleTypeDef *timerSecodnary);
 
 //run this in output compare INT
 void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim);

@@ -19,7 +19,7 @@
 volatile uint8_t parity;
 
 vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
-		volatile uint32_t *regHsyncCCR) {
+		TIM_HandleTypeDef *timerPrimary, TIM_HandleTypeDef *timerSecodnary) {
 
 	vid_state_t status = VID_STAT_OK;
 	vid->stepsOnPeriod = columns;
@@ -27,40 +27,41 @@ vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
 
 	vid->actualPeriod = 0;
 
-	vid->regHsyncCCR = regHsyncCCR;
+	vid->timerPrimary = timerPrimary;
+	vid->timerSecondary = timerSecodnary;
 
 	//start hsync PWM
-	HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_1);
-	*vid->regHsyncCCR = 5; //set duty
+	HAL_TIM_PWM_Start_IT(vid->timerPrimary, TIM_CHANNEL_1);
+	vid->timerPrimary->Instance->CCR1 = 5; //set duty
 
 	//start OC for vsync start
-	HAL_TIM_OC_Start_IT(&htim3, TIM_CHANNEL_2);
+	HAL_TIM_OC_Start_IT(vid->timerPrimary, TIM_CHANNEL_2);
 
 	//set start time of tim4
-	TIM3->CCR2 = 16;
+	vid->timerPrimary->Instance->CCR2 = 16;
 
 	//set duty for tim4 ch1
-	TIM4->CCR1 = 20;
+	vid->timerSecondary->Instance->CCR1 = 20;
 
 	return status;
 
 }
 
 /*
- * run in callback from OC channel in main timer
+ * run in callback from OC channel in primary timer
  */
 void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
 
-	if (htim->Instance == TIM3) {
+	if (htim->Instance == vid->timerPrimary->Instance) {
 
 		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_2) {
 
 			parity++;
 
 			if ((parity & 1) == 0)
-				HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
+				HAL_TIM_PWM_Start(vid->timerSecondary, TIM_CHANNEL_1);
 			else
-				HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
+				HAL_TIM_PWM_Stop(vid->timerSecondary, TIM_CHANNEL_1);
 		}
 
 	}
@@ -68,11 +69,11 @@ void vid_timerHsyncOCCallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
 }
 
 /*
- * run in callback from PE in main timer
+ * run in callback from PE in primary timer
  */
 void vid_timerHsyncPECallback(vid_flow_t *vid, TIM_HandleTypeDef *htim) {
 
-	if (htim->Instance == TIM3) {
+	if (htim->Instance == vid->timerPrimary->Instance) {
 
 		vid->actualPeriod++;
 		if (vid->actualPeriod >= vid->periods)
