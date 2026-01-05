@@ -9,12 +9,9 @@
 #define VID_H_
 
 #include <stdint.h>
+#include "gpio.h"
+#include "tim.h"
 
-typedef enum {
-
-	PAL, NTSC, SECAM
-
-} vid_system_t;
 
 typedef enum {
 	LOW, HIGH
@@ -25,25 +22,21 @@ typedef enum {
 } vid_state_t;
 
 typedef struct {
+	uint32_t stepsOnPeriod;
+	uint32_t periods; //with blanking
 
-	vid_system_t system;
-	uint32_t columns;
-	uint32_t lines; //with blanking
-
-	uint32_t actualLine;
+	volatile uint32_t actualPeriod;
 
 	//shortcuts to timer registers
-	volatile uint32_t *regCCR;
-	volatile uint32_t *regCNT;
-	volatile uint32_t *regCCMR1;
+	volatile uint32_t *regHsyncCCR;
 
 	//pointer for sync array(64bits per line * target number of lines)
 	uint64_t *patterns;
 
 } vid_flow_t;
 
-vid_state_t vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
-		uint32_t lines, volatile uint32_t *regCCR, volatile uint32_t *regCCMR1);
+vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+		volatile uint32_t *regVsyncCCR);
 
 //run this in output compare INT
 void vid_timerOCCallback(vid_flow_t *vid);

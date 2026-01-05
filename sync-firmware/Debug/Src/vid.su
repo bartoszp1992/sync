@@ -1,5 +1,5 @@
-../Src/vid.c:17:13:vid_init	32	static
-../Src/vid.c:46:6:vid_levelOnCompare	16	static
-../Src/vid.c:63:6:vid_timerOCCallback	48	static
-../Src/vid.c:80:6:vid_timerPECallback	16	static
-../Src/vid.c:91:6:vid_lineReset	16	static
+../Src/vid.c:19:13:vid_init	40	static
+../Src/vid.c:71:6:vid_timerOCCallback	16	static
+../Src/vid.c:75:6:vid_timerPECallback	16	static
+../Src/vid.c:86:6:vid_lineReset	16	static
+../Src/vid.c:91:6:vid_screenReset	16	static

@@ -4,92 +4,90 @@
  *  Created on: Dec 23, 2025
  *      Author: bartosz
  *
- *      manual:
- *      1. set timer tick for 1us
- *      2. set timer period for 64 ticks
+ *	notes:
+ *	tim3 startuje z początkiem każdej linii i wywołuje hsync, który kończy się na CCR1
+ *	tim3 liczy dalej i na CCR2(2gi kanał) generuje przerwanie do vsync
+ *	przerwanie do vsync odpala tim4 w one pulse mode i odpala drugi impuls, zgodnie z patternem
  *
- *
+ *	problem:
+ *	nie potrafię wywołać one pulse mode->nie działa.
  */
 
 #include "vid.h"
 #include <stdlib.h>
 
-vid_state_t vid_init(vid_flow_t *vid, vid_system_t system, uint32_t columns,
-		uint32_t lines, volatile uint32_t *regCCR, volatile uint32_t *regCCMR1) {
+vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
+		volatile uint32_t *regHsyncCCR) {
 
 	vid_state_t status = VID_STAT_OK;
+	vid->stepsOnPeriod = columns;
+	vid->periods = lines;
 
-	vid->system = system;
-	vid->columns = columns;
-	vid->lines = lines;
+	vid->actualPeriod = 0;
 
-	vid->actualLine = 0;
+	vid->regHsyncCCR = regHsyncCCR;
 
-	vid->regCCR = regCCR;
-	vid->regCNT = 0;
-	vid->regCCMR1 = regCCMR1;
+	*vid->regHsyncCCR = 5;
 
-	vid->patterns = malloc(vid->lines * sizeof(uint64_t));
+	vid->patterns = malloc(vid->periods * sizeof(uint64_t));
 
-	if(vid->patterns == NULL){
-		free(vid->patterns);
+	if (vid->patterns == NULL) {
 		status = VID_STAT_ERR_NOT_ENOUGH_MEMORY;
 	}
+
+
+	//temp
+	// 5x: jeden impuls LOW 1us na początku
+	for(int i=0;i<5;i++){
+	    vid->patterns[i] = 0x0000000000000003ULL;
+	}
+
+	// 5x: dwa impulsy LOW 1us w okresie
+	for(int i=5;i<10;i++){
+	    vid->patterns[i] = (1ULL<<5)|(1ULL<<6)|(1ULL<<20)|(1ULL<<21);
+	}
+
+	HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_1);
+
+
+	HAL_TIM_OC_Start_IT(&htim3, TIM_CHANNEL_2);
+	//set start time of tim4
+	TIM3->CCR2 = 16;
+
+
+	//set duty for tim4 ch1
+	TIM4->CCR1 = 20;
+
+
+
+	//tempp end
+
 
 	return status;
 
 }
 
-/*
- * set target level on next compare event
- */
-void vid_levelOnCompare(vid_flow_t *vid, vid_level_t level){
 
-	*vid->regCCMR1 &= ~(1<<16);//OC1M[3] - reset bit 16
-	*vid->regCCMR1 &= ~(7<<4);// reset OC1M[2:0] - reset bits 4,5,6,7
-
-	if(level == HIGH){
-		//switch register
-		*vid->regCCMR1 |= 1<<4;//active level on match
-
-	}
-	else{
-		//switch register
-		*vid->regCCMR1 |= 1<<5;//inactive level on match
-	}
+void vid_timerOCCallback(vid_flow_t *vid) {
 
 }
 
-void vid_timerOCCallback(vid_flow_t *vid){
+void vid_timerPECallback(vid_flow_t *vid) {
 
-	//pull actual line pattern
-	uint64_t actualLinePattern = vid->patterns[vid->actualLine];
-
-	//read bit corresponding to actual OC
-	uint8_t actualState = (uint8_t)(actualLinePattern >> *vid->regCNT);
-
-	//if actual state are high, set next OC switch to high
-	if(actualState){
-		vid_levelOnCompare(vid, LOW);
-	}else{
-		vid_levelOnCompare(vid, HIGH);
-	}
+	vid->actualPeriod++;
+	if (vid->actualPeriod >= vid->periods)
+		vid->actualPeriod = 0;
 
 }
-
-void vid_timerPECallback(vid_flow_t *vid){
-
-	vid->actualLine ++;
-	if(vid->actualLine > vid->lines) vid->actualLine = 0;
-
-}
-
 
 /*
  * fot future use: reset line due to sync with input signal
  */
-void vid_lineReset(vid_flow_t *vid){
+void vid_lineReset(vid_flow_t *vid) {
 
-	vid->regCNT = 0;
 
+}
+
+void vid_screenReset(vid_flow_t *vid) {
+	vid->actualPeriod = 0;
 }
