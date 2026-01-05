@@ -16,7 +16,7 @@
 #include "vid.h"
 #include <stdlib.h>
 
-volatile uint8_t parity;
+volatile uint32_t parity;
 
 vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
 		TIM_HandleTypeDef *timerPrimary, TIM_HandleTypeDef *timerSecodnary) {
@@ -37,10 +37,10 @@ vid_state_t vid_init(vid_flow_t *vid, uint32_t columns, uint32_t lines,
 	//start OC for vsync start
 	HAL_TIM_OC_Start_IT(vid->timerPrimary, TIM_CHANNEL_2);
 
-	//set start time of tim4
+	//set start time of secondaty timer pulse
 	vid->timerPrimary->Instance->CCR2 = 16;
 
-	//set duty for tim4 ch1
+	//set duty for secondary timer pulse
 	vid->timerSecondary->Instance->CCR1 = 20;
 
 	return status;

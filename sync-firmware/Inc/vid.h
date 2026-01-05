@@ -27,10 +27,12 @@ typedef struct {
 
 	volatile uint32_t actualPeriod;
 
-	TIM_HandleTypeDef *timerPrimary, *timerSecondary;
+	//timer for hsync generation(CH1), and oc generation for starting secondary timer(CH2)
+	TIM_HandleTypeDef *timerPrimary;
 
-	//shortcuts to timer registers
-	volatile uint32_t *regHsyncCCR;
+	//timer for vsyng generation(CH1)
+	TIM_HandleTypeDef *timerSecondary;
+
 
 
 } vid_flow_t;
