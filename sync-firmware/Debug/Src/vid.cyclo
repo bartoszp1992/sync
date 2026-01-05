@@ -1,5 +1,0 @@
-../Src/vid.c:21:13:vid_init	1
-../Src/vid.c:53:6:vid_timerHsyncOCCallback	4
-../Src/vid.c:74:6:vid_timerHsyncPECallback	3
-../Src/vid.c:89:6:vid_lineReset	1
-../Src/vid.c:93:6:vid_screenReset	1
