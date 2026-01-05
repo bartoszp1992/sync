@@ -205,9 +205,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 }
 
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
-
 	vid_timerHsyncOCCallback(&video, htim);
-
 }
 
 /* USER CODE END 4 */

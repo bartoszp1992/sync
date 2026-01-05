@@ -20741,12 +20741,10 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
  8008286:	b082      	sub	sp, #8
  8008288:	af00      	add	r7, sp, #0
  800828a:	6078      	str	r0, [r7, #4]
-
 	vid_timerHsyncOCCallback(&video, htim);
  800828c:	6879      	ldr	r1, [r7, #4]
  800828e:	4803      	ldr	r0, [pc, #12]	@ (800829c <HAL_TIM_OC_DelayElapsedCallback+0x18>)
  8008290:	f000 fb10 	bl	80088b4 <vid_timerHsyncOCCallback>
-
 }
  8008294:	bf00      	nop
  8008296:	3708      	adds	r7, #8
